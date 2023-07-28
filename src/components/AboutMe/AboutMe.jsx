@@ -1,4 +1,4 @@
-import avatarPicture from '../../images/ava.jpg';
+import avatar from '../../images/ava.jpg';
 import './AboutMe.css';
 
 const AboutMe = () => {
@@ -10,7 +10,7 @@ const AboutMe = () => {
         <div className="about-me__description">
           <img
             className="about-me__avatar"
-            src={avatarPicture}
+            src={avatar}
             alt="MarkusRND"
           />
           <div className="about-me__text">

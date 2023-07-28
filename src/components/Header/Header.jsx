@@ -3,7 +3,7 @@ import "./Header.css";
 import Navigation from "../Navigation/Navigation";
 import Logo from "../Logo/Logo";
 
-function Header({ isLoggedIn }) {
+const Header = ({ isLoggedIn }) => {
   return (
     <>
       <header className="header">
@@ -12,6 +12,6 @@ function Header({ isLoggedIn }) {
       </header>
     </>
   );
-}
+};
 
 export default Header;

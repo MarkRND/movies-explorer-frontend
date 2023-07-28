@@ -1,0 +1,159 @@
+.profile {
+  padding: 73px 0 0px;
+  margin: 0 auto;
+  background-color: #202020;
+}
+
+.profile__line {
+  border-bottom: 1px solid #424242;
+  margin: 0;
+  margin-top: 5px;
+  margin-bottom: 17px;
+}
+
+.profile__form {
+  max-width: 410px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.profile__title {
+  margin: 0;
+  text-align: center;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.profile__labels {
+  margin: 0;
+  margin-top: 123px;
+}
+
+.profile__label {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile__text {
+  margin: 0;
+  color: #fff;
+  text-align: right;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.profile__input {
+  box-sizing: border-box;
+  max-width: 300px;
+  margin: 0;
+  padding: 0;
+  height: 14px;
+  color: #fff;
+  border: none;
+  outline: none;
+  text-align: right;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  background-color: #202020;
+  cursor: pointer;
+}
+
+.profile__input:hover {
+  border: 1px solid #4285f4;
+}
+
+.profile__error {
+  display: block;
+  margin: 0;
+  padding: 0;
+  color: #ee3465;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.profile__button {
+  margin: 0;
+  padding: 0;
+  margin-top: 208px;
+  text-align: center;
+  width: 100%;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  background-color: #202020;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.profile__button:hover {
+  opacity: 0.6;
+}
+
+.profile__block {
+  margin: 0;
+  padding-bottom: 70px;
+  display: block;
+  margin-top: 16px;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-align: center;
+}
+
+.profile__link {
+  text-decoration-line: none;
+  color: #ee3465;
+}
+.profile__link:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 768px) {
+  .profile {
+    padding: 236px 0 0;
+  }
+
+  .profile__labels {
+    margin: 0;
+    margin-top: 96px;
+  }
+
+  .profile__button {
+    margin-top: 199px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .profile {
+    padding-top: 70px;
+  }
+
+  .profile__form {
+    max-width: 260px;
+  }
+
+  .profile__labels {
+    margin-top: 80px;
+  }
+
+  .profile__button {
+    margin-top: 368px;
+    font-size: 12px;
+  }
+
+  .profile__block {
+    font-size: 12px;
+    margin-top: 15px;
+    padding-bottom: 40px;
+  }
+}

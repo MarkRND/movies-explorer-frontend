@@ -1,0 +1,270 @@
+.navigation__main {
+  margin: 0;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  list-style-type: none;
+}
+
+.navigation__films {
+  display: flex;
+  gap: 364px;
+  
+}
+
+.navigation__films-buttons {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 17px;
+  list-style-type: none;
+  
+}
+
+.navigation__button {
+  margin: 0;
+  padding: 0;
+  min-height: 32px;
+  color: #fff;
+  text-align: right;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  outline: none;
+  border: none;
+}
+
+.navigation__button.active {
+  font-weight: 500;
+}
+
+.navigation__button:hover {
+  cursor: pointer;
+  color: #4285f4;
+}
+
+.navigation__button_in {
+  color: #000;
+  background-color: #3ddc84;
+  width: 77px;
+  border-radius: 3px;
+  transition: transform 0.2s;
+}
+
+.navigation__button_in:hover {
+  color: #000;
+  transform: scale(1.1);
+}
+.navigation__button_films {
+  display: flex;
+  font-size: 13px;
+  line-height: 18px;
+  justify-content: space-between;
+}
+
+.navigation__button_save {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.navigation__button_account {
+  display: flex;
+  margin: 0;
+  width: 100px;
+  height: 32px;
+  color: #fff;
+  font-size: 14px;
+  background-color: #313131;
+  border-radius: 20px;
+  transition: background-color 0.25s;
+}
+
+.navigation__button_account:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  color: #fff;
+}
+
+.navigation__menu-button {
+  background-color: #202020;
+  border: none;
+  width: 44px;
+  height: 44px;
+  display: none;
+  color: #fff;
+  transition: background-color 0.25s;
+}
+
+.navigation__menu-button:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+.navigation__menu-items {
+  display: none;
+}
+
+@media screen and (max-width: 890px) {
+  .navigation__films {
+    gap: 200px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navigation__films-buttons {
+    display: none;
+  }
+
+  .navigation__button_account {
+    display: none;
+  }
+
+  .navigation__menu-button {
+    display: block;
+    color: #fff;
+  }
+
+  .navigation__menu-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    right: -100%;
+    top: 0;
+    bottom: 0;
+    width: 67.7%;
+    height: 100%;
+    background-color: #202020;
+    z-index: 10;
+    transition: right 1s;
+    align-items: center;
+  }
+
+  .active {
+    right: 0;
+  }
+
+  .navigation__menu-close {
+    position: absolute;
+    top: 22px;
+    right: 22px;
+  }
+
+  .navigation__name {
+    margin: 0;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding-bottom: 4px;
+  }
+  .navigation__name:hover {
+    cursor: pointer;
+    color: #4285f4;
+  }
+
+  .navigation__menu {
+    margin: 0;
+    padding: 0;
+    margin-top: 159px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    text-decoration: none;
+    list-style-type: none;
+    align-items: center;
+  }
+
+  .navigation__account {
+    display: flex;
+    margin: 0;
+    width: 100px;
+    height: 32px;
+    color: #fff;
+    background-color: #313131;
+    border-radius: 20px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    justify-content: center;
+    margin-bottom: 93px;
+    text-decoration: none;
+    align-items: center;
+  }
+
+  .navigation__account:hover {
+    cursor: pointer;
+    opacity: 0.6;
+  }
+
+  .navigation__name.active {
+    border-bottom: 2px solid #fff;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .navigation__main {
+    gap: 14px;
+  }
+
+  .navigation__button {
+    min-height: 26px;
+    font-size: 10px;
+    line-height: 16px;
+  }
+
+  .navigation__button-black {
+    min-width: 54px;
+  }
+
+  .navigation__button_in {
+    color: #000;
+    width: 54px;
+    height: 25px;
+  }
+
+  .navigation__burger {
+    width: 30px;
+    height: 35px;
+  }
+
+  .navigation__menu-button {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@media screen and (max-width: 341px) {
+  .navigation__menu-items {
+    width: 100%;
+  }
+
+  .navigation__menu {
+    margin-top: 144px;
+    gap: 24.5px;
+  }
+
+  .navigation__account {
+    margin-bottom: 47px;
+  }
+
+  .navigation__name {
+    padding-bottom: 7px;
+  }
+
+  .navigation__menu-close {
+    position: absolute;
+    top: 13px;
+    right: 13px;
+  }
+}

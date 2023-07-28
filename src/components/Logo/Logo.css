@@ -1,0 +1,17 @@
+.logo {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  transition: transform 0.2s;
+  
+}
+
+.logo:hover {
+  transform: scale(1.02);
+}
+
+@media screen and (max-width: 430px) {
+  .logo {
+    justify-content: center;
+  }
+}

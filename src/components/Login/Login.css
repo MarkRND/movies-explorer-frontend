@@ -1,0 +1,156 @@
+.login {
+  padding: 70px 0;
+  margin: 0 auto;
+  background-color: #202020;
+  max-width: 396px;
+  justify-content: center;
+}
+
+.login__form {
+  max-width: 396px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.login__title {
+  margin: 0;
+  margin-top: 40px;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.login__labels {
+  margin: 0;
+  margin-top: 40px;
+}
+
+.login__label {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.login__text {
+  margin: 0;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: #8b8b8b;
+}
+
+.login__input {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  height: 45px;
+  border-radius: 8px;
+  background: #2f2f2f;
+  border: 0;
+  padding-left: 15px;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: #fff;
+  outline: none;
+  cursor: pointer;
+}
+
+.login__input:hover {
+  border: 1px solid #4285f4;
+}
+
+.login__error {
+  margin: 0;
+  color: #ee3465;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.login__button {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  margin-top: 157px;
+  border-radius: 3px;
+  height: 45px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  background-color: #4285f4;
+  color: #fff;
+  border: none;
+  transition: background-color 0.25s;
+}
+
+.login__button:hover {
+  transform: scale(1.05);
+  opacity: 0.6;
+  cursor: pointer;
+}
+.login__block {
+  margin: 0;
+  display: block;
+  margin-top: 16px;
+  color: #8b8b8b;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  gap: 6px;
+}
+
+.login__link {
+  color: #4285f4;
+  text-decoration-line: none;
+  margin-left: 6px;
+}
+
+.login__link:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 768px) {
+  .login {
+    padding: 232px 0;
+  }
+}
+
+
+@media screen and (max-width: 430px) {
+  .login {
+    padding: 56px 0 0;
+    }
+
+  .login__form {
+    max-width: 260px;
+    width: 100%;
+   }
+
+  .login__title {
+    display: flex;
+    justify-content: center;
+ margin-top: 50px;
+  }
+
+  .login__labels {
+    margin-top: 80px;
+  }
+
+  .login__button {
+    margin-top: 245px;
+    font-size: 12px;
+  }
+  
+  .login__block {
+    font-size: 12px;
+    padding-bottom: 30px;
+  }
+}

@@ -1,0 +1,84 @@
+.filter {
+  margin: 0;
+  padding: 0;
+  margin-top: 28px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.filter__switch {
+  display: inline-block;
+  background: #2f2f2f;
+  border-radius: 16px;
+  width: 33px;
+  height: 13px;
+  position: relative;
+  vertical-align: middle;
+  transition: background-color 0.25s;
+  margin-right: 15px;
+}
+.filter__switch:hover {
+  transform: scale(1.2);
+}
+.filter__switch:before,
+.filter__switch:after {
+  content: "";
+}
+.filter__switch:before {
+  display: block;
+  background: linear-gradient(to bottom, #fff 0%, #dadada 100%);
+  border-radius: 50%;
+  width: 9px;
+  height: 9px;
+  position: absolute;
+  top: 1.7px;
+  left: 2.5px;
+  transition: left 0.25s;
+  align-self: center;
+}
+.filter:hover .filter__switch:before {
+  background: linear-gradient(to bottom, #fff 0%, #fff 100%);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+}
+.filter__checkbox:checked + .filter__switch {
+  background: #56c080;
+}
+.filter__checkbox:checked + .filter__switch:before {
+  left: 21px;
+}
+
+.filter__checkbox {
+  position: absolute;
+  visibility: hidden;
+}
+
+.filter__text {
+  margin: 0;
+  position: relative;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.filter__text:hover {
+  cursor: pointer;
+  color: #4285f4;
+}
+
+@media screen and (max-width: 768px) {
+  .filter {
+    margin-top: 39px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .filter {
+    margin-top: 47px;
+  }
+
+  .filter__text {
+    /* margin-left: 16px; */
+    font-size: 11px;
+  }
+}

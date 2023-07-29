@@ -127,25 +127,24 @@
 
 @media screen and (max-width: 768px) {
   .register {
-    padding: 232px 0 0;
+    padding: 232px 0;
   }
 }
 
 @media screen and (max-width: 430px) {
   .register {
     padding: 56px 0 0;
-    }
-
+  }
 
   .register__form {
     max-width: 260px;
     width: 100%;
-   }
+  }
 
   .register__title {
     display: flex;
     justify-content: center;
- margin-top: 50px;
+    margin-top: 50px;
   }
 
   .register__labels {
@@ -156,7 +155,7 @@
     margin-top: 156px;
     font-size: 12px;
   }
-  
+
   .register__block {
     font-size: 12px;
     padding-bottom: 30px;

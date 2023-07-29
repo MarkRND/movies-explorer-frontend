@@ -9,7 +9,6 @@
 .navigation__films {
   display: flex;
   gap: 364px;
-  
 }
 
 .navigation__films-buttons {
@@ -18,7 +17,6 @@
   display: flex;
   gap: 17px;
   list-style-type: none;
-  
 }
 
 .navigation__button {
@@ -154,6 +152,12 @@
     position: absolute;
     top: 22px;
     right: 22px;
+    transition: background-color 0.25s;
+  }
+
+  .navigation__menu-close:hover {
+    cursor: pointer;
+    transform: scale(1.2);
   }
 
   .navigation__name {

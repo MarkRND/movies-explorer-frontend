@@ -59,6 +59,7 @@
 }
 
 .footer__link:hover {
+  opacity: 0.9;
   color: #4285f4;
 }
 

@@ -19,6 +19,7 @@
 }
 .filter__switch:hover {
   transform: scale(1.2);
+  opacity: 0.8;
 }
 .filter__switch:before,
 .filter__switch:after {

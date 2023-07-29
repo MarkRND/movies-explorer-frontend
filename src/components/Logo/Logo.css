@@ -8,6 +8,7 @@
 
 .logo:hover {
   transform: scale(1.02);
+  opacity: 0.9;
 }
 
 @media screen and (max-width: 430px) {

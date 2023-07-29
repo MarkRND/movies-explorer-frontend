@@ -12,7 +12,7 @@ import Login from "../Login/Login";
 import Profile from "../Profile/Profile";
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   return (
     <div className="page">

@@ -92,12 +92,10 @@
   background-color: #4285f4;
   color: #fff;
   border: none;
-  transition: background-color 0.25s;
   outline: none;
 }
 
 .register__button:hover {
-  transform: scale(1.05);
   opacity: 0.8;
   cursor: pointer;
 }

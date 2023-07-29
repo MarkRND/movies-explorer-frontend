@@ -51,12 +51,10 @@
   background-color: #3ddc84;
   width: 77px;
   border-radius: 3px;
-  transition: transform 0.2s;
 }
 
 .navigation__button_in:hover {
   color: #000;
-  transform: scale(1.1);
   opacity: 0.8;
 }
 .navigation__button_films {
@@ -82,13 +80,10 @@
   font-size: 14px;
   background-color: #313131;
   border-radius: 20px;
-  transition: background-color 0.25s;
 }
 
 .navigation__button_account:hover {
   cursor: pointer;
-  transform: scale(1.1);
-  color: #fff;
   opacity: 0.8;
 }
 
@@ -99,12 +94,10 @@
   height: 44px;
   display: none;
   color: #fff;
-  transition: background-color 0.25s;
 }
 
 .navigation__menu-button:hover {
   cursor: pointer;
-  transform: scale(1.2);
   opacity: 0.8;
 }
 .navigation__menu-items {
@@ -155,12 +148,11 @@
     position: absolute;
     top: 22px;
     right: 22px;
-    transition: background-color 0.25s;
   }
 
   .navigation__menu-close:hover {
     cursor: pointer;
-    transform: scale(1.2);
+
     opacity: 0.8;
   }
 

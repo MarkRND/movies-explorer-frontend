@@ -14,12 +14,10 @@
   height: 13px;
   position: relative;
   vertical-align: middle;
-  transition: background-color 0.25s;
   margin-right: 15px;
 }
 .filter__switch:hover {
-  transform: scale(1.2);
-  opacity: 0.8;
+   opacity: 0.8;
 }
 .filter__switch:before,
 .filter__switch:after {

@@ -4,6 +4,7 @@
   background-color: #202020;
   max-width: 396px;
   justify-content: center;
+  min-height: 100vh;
 }
 
 .login__form {

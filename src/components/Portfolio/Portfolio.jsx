@@ -1,5 +1,5 @@
 import "./Portfolio.css";
-import strelka from "../../images/stelk-mi.png";
+import strelka from "../../images/stelk-min.svg";
 
 const Portfolio = () => {
   return (

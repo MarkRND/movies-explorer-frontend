@@ -1,6 +1,6 @@
 import { useState } from "react";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
-import button from "../../images/button_search1.png";
+import button from "../../images/button_search-min.svg";
 import "./SearchForm.css";
 
 const SearchForm = () => {

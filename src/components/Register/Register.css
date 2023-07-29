@@ -1,9 +1,10 @@
 .register {
-  padding: 70px 0 0;
+  padding: 74px 0 70px;
   margin: 0 auto;
   background-color: #202020;
   max-width: 396px;
   min-height: 100vh;
+  box-sizing: border-box;
 }
 
 .register__form {
@@ -47,7 +48,7 @@
 }
 
 .register__input {
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   margin: 0;
   padding: 0;
   height: 45px;
@@ -103,7 +104,6 @@
 
 .register__block {
   margin: 0;
-  padding-bottom: 70px;
   display: block;
   margin-top: 16px;
   color: #8b8b8b;
@@ -127,13 +127,13 @@
 
 @media screen and (max-width: 768px) {
   .register {
-    padding: 232px 0;
+    padding: 236px 0 269px;
   }
 }
 
 @media screen and (max-width: 430px) {
   .register {
-    padding: 56px 0 0;
+    padding: 56px 0 30px;
   }
 
   .register__form {
@@ -152,12 +152,11 @@
   }
 
   .register__button {
-    margin-top: 156px;
+    margin-top: 155px;
     font-size: 12px;
   }
 
   .register__block {
     font-size: 12px;
-    padding-bottom: 30px;
   }
 }

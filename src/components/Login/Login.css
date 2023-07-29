@@ -5,6 +5,7 @@
   max-width: 396px;
   justify-content: center;
   min-height: 100vh;
+  box-sizing: border-box;
 }
 
 .login__form {
@@ -127,7 +128,7 @@
 
 @media screen and (max-width: 430px) {
   .login {
-    padding: 56px 0 0;
+    padding: 56px 0 30px;
     }
 
   .login__form {
@@ -138,7 +139,7 @@
   .login__title {
     display: flex;
     justify-content: center;
- margin-top: 50px;
+    margin-top: 50px;
   }
 
   .login__labels {
@@ -152,6 +153,6 @@
   
   .login__block {
     font-size: 12px;
-    padding-bottom: 30px;
-  }
+    margin-top: 15px;
+     }
 }

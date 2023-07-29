@@ -31,6 +31,7 @@ const Login = () => {
               onChange={handleChange}
               value={inputs.email}
               type="email"
+              placeholder="Введите email"
               required
             />
             <span className="login__error">Что-то пошло не так...</span>
@@ -43,6 +44,7 @@ const Login = () => {
               onChange={handleChange}
               value={inputs.password}
               type="password"
+              placeholder="Введите пароль"
               required
             />
             <span className="login__error">Что-то пошло не так...</span>

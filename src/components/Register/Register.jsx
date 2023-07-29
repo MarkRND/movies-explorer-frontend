@@ -36,6 +36,8 @@ const Register = () => {
                 required
                 minLength="2"
                 maxLength="30"
+                placeholder="Введите имя"
+                
               />
               <span className="register__error">Что-то пошло не так...</span>
             </label>
@@ -47,7 +49,7 @@ const Register = () => {
                 onChange={handleChange}
                 value={inputs.email}
                 type="email"
-                required
+                placeholder="Введите email"
               />
               <span className="register__error">
                 Пользователь с таким email уже существует
@@ -61,6 +63,7 @@ const Register = () => {
                 onChange={handleChange}
                 value={inputs.password}
                 type="password"
+                placeholder="Введите пароль"
                 required
               />
               <span className="register__error">Что-то пошло не так...</span>

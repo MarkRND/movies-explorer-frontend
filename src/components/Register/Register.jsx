@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import "./Register.css";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
-import { EMAIL_VALID } from "../constants/constants";
 
 const Register = ({ onRegister, serverError }) => {
   const { inputs, handleChange, resetForm, errors, isValid } =
@@ -52,7 +51,6 @@ const Register = ({ onRegister, serverError }) => {
                 type="email"
                 placeholder="Введите email"
                 required
-                pattern={EMAIL_VALID}
               />
 
               {errors.email && (

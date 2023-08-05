@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 import "./Profile.css";
-import { EMAIL_VALID } from "../constants/constants";
 
 const Profile = ({ onLogout, onEditUser, serverError, successfully }) => {
   const currentUser = useContext(CurrentUserContext);
@@ -71,7 +70,6 @@ const Profile = ({ onLogout, onEditUser, serverError, successfully }) => {
               required
               readOnly={!editMode}
               onChange={handleChange}
-              pattern={EMAIL_VALID}
             />
           </label>
 

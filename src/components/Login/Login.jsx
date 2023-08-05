@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import "./Login.css";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
-import { EMAIL_VALID } from "../constants/constants";
 
 const Login = ({ onLogin, serverError }) => {
   const { inputs, handleChange, resetForm, errors, isValid } =
@@ -34,7 +33,6 @@ const Login = ({ onLogin, serverError }) => {
               placeholder="Введите email"
               name="email"
               required
-              pattern={EMAIL_VALID}
             />
             {errors.email && (
               <span className="login__error">{errors.email}</span>

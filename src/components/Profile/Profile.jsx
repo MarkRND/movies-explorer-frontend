@@ -2,10 +2,12 @@ import { useContext, useEffect, useState } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 import "./Profile.css";
+import { EMAIL_VALID } from "../constants/constants";
 
 const Profile = ({ onLogout, onEditUser, serverError, successfully }) => {
   const currentUser = useContext(CurrentUserContext);
-  const { inputs, handleChange, resetForm, errors, isValid } = useFormAndValidation();
+  const { inputs, handleChange, resetForm, errors, isValid } =
+    useFormAndValidation();
   const [editMode, setEditMode] = useState(false);
 
   useEffect(() => {
@@ -69,7 +71,7 @@ const Profile = ({ onLogout, onEditUser, serverError, successfully }) => {
               required
               readOnly={!editMode}
               onChange={handleChange}
-              pattern="^[\w]+@[a-zA-Z]+\.[a-zA-Z]{1,3}$"
+              pattern={EMAIL_VALID}
             />
           </label>
 
@@ -78,7 +80,9 @@ const Profile = ({ onLogout, onEditUser, serverError, successfully }) => {
           )}
         </div>
         <div className="profile__container">
-          <span className="profile__error-server profile__error-server-ок">{successfully}</span>
+          <span className="profile__error-server profile__error-server-ок">
+            {successfully}
+          </span>
           {serverError && (
             <span className="profile__error-server">{serverError}</span>
           )}

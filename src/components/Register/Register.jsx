@@ -2,17 +2,17 @@ import { Link } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import "./Register.css";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
-
+import { EMAIL_VALID } from "../constants/constants";
 
 const Register = ({ onRegister, serverError }) => {
   const { inputs, handleChange, resetForm, errors, isValid } =
-  useFormAndValidation();
- 
-const handleRegisterSubmit = (evt) => {
-  evt.preventDefault();
-  onRegister(inputs);
-  resetForm();
-};
+    useFormAndValidation();
+
+  const handleRegisterSubmit = (evt) => {
+    evt.preventDefault();
+    onRegister(inputs);
+    resetForm();
+  };
 
   return (
     <main className="register">
@@ -31,7 +31,7 @@ const handleRegisterSubmit = (evt) => {
                 name="name"
                 className="register__input"
                 onChange={handleChange}
-                value={inputs.name || ''}
+                value={inputs.name || ""}
                 type="text"
                 required
                 minLength="2"
@@ -48,13 +48,13 @@ const handleRegisterSubmit = (evt) => {
                 name="email"
                 className="register__input"
                 onChange={handleChange}
-                value={inputs.email || ''}
+                value={inputs.email || ""}
                 type="email"
                 placeholder="Введите email"
                 required
-                pattern="^[\w]+@[a-zA-Z]+\.[a-zA-Z]{1,3}$"
-            />
-              
+                pattern={EMAIL_VALID}
+              />
+
               {errors.email && (
                 <span className="register__error">{errors.email}</span>
               )}
@@ -65,7 +65,7 @@ const handleRegisterSubmit = (evt) => {
                 name="password"
                 className="register__input"
                 onChange={handleChange}
-                value={inputs.password || ''}
+                value={inputs.password || ""}
                 type="password"
                 placeholder="Введите пароль"
                 required
@@ -76,9 +76,7 @@ const handleRegisterSubmit = (evt) => {
             </label>
           </div>
           <div className="register__buttons">
-            <span className="register__error-server">
-              {serverError}
-            </span>
+            <span className="register__error-server">{serverError}</span>
             <button
               type="submit"
               className="register__button"

@@ -86,13 +86,12 @@ const App = () => {
     try {
       const newMovie = await apiMain.addMovie(data);
       if (newMovie) {
-        setSaveMovies([newMovie, ...saveMovies]);
+              setSaveMovies([newMovie, ...saveMovies]);
       }
     } catch (err) {
       console.error(err);
     }
   };
- 
   
   
 

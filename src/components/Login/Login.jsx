@@ -1,12 +1,10 @@
-
 import { Link } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import "./Login.css";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
-
+import { EMAIL_VALID } from "../constants/constants";
 
 const Login = ({ onLogin, serverError }) => {
-
   const { inputs, handleChange, resetForm, errors, isValid } =
     useFormAndValidation();
 
@@ -19,20 +17,24 @@ const Login = ({ onLogin, serverError }) => {
   return (
     <main className="login">
       <Logo />
-      <form className="login__form" name="login" onSubmit={handleAuthorizeSubmit}>
+      <form
+        className="login__form"
+        name="login"
+        onSubmit={handleAuthorizeSubmit}
+      >
         <h2 className="login__title">Рады видеть!</h2>
         <div className="login__labels">
           <label className="login__label">
             <span className="login__text">E-mail</span>
             <input
-             
               className="login__input"
               onChange={handleChange}
-              value={inputs.email || ''}
+              value={inputs.email || ""}
               type="email"
               placeholder="Введите email"
               name="email"
               required
+              pattern={EMAIL_VALID}
             />
             {errors.email && (
               <span className="login__error">{errors.email}</span>
@@ -41,9 +43,9 @@ const Login = ({ onLogin, serverError }) => {
           <label className="login__label">
             <span className="login__text">Пароль</span>
             <input
-                            className="login__input"
+              className="login__input"
               onChange={handleChange}
-              value={inputs.password || ''}
+              value={inputs.password || ""}
               type="password"
               placeholder="Введите пароль"
               name="password"
@@ -54,20 +56,17 @@ const Login = ({ onLogin, serverError }) => {
             )}
           </label>
           <div className="login__buttons">
-            <span className="login__error-server">
-              {serverError}
-           
-            </span>
-        </div>
-        <button type="submit" className="login__button" disabled={!isValid}>
-          Войти
-        </button>
-        <span className="login__block">
-          Ещё не зарегистрированы?
-          <Link to="/signup" className="login__link">
-            Регистрация
-          </Link>
-        </span>
+            <span className="login__error-server">{serverError}</span>
+          </div>
+          <button type="submit" className="login__button" disabled={!isValid}>
+            Войти
+          </button>
+          <span className="login__block">
+            Ещё не зарегистрированы?
+            <Link to="/signup" className="login__link">
+              Регистрация
+            </Link>
+          </span>
         </div>
       </form>
     </main>

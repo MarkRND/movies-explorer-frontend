@@ -2,9 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 import "./Profile.css";
-import {
-EMAIL_VALID
-} from "../constants/constants";
 
 const Profile = ({ onLogout, onEditUser, serverError, successfully }) => {
   const currentUser = useContext(CurrentUserContext);
@@ -27,11 +24,18 @@ const Profile = ({ onLogout, onEditUser, serverError, successfully }) => {
   const handleSaveClick = (evt) => {
     evt.preventDefault();
     if (isValid) {
+      if (inputs.email === currentUser.email) {
+        // The email hasn't been changed, so you can show an error message or handle it as you prefer.
+        // For example, you can set an error state to show a message to the user.
+        // setErrorState("You haven't changed your email.");
+        return;
+      }
+
       onEditUser({
         name: inputs.name,
         email: inputs.email,
       });
-      setEditMode(false)
+      setEditMode(false);
     }
   };
 
@@ -68,7 +72,7 @@ const Profile = ({ onLogout, onEditUser, serverError, successfully }) => {
               required
               readOnly={!editMode}
               onChange={handleChange}
-              pattern={EMAIL_VALID}
+              pattern="^[\w]+@[a-zA-Z]+\.[a-zA-Z]{1,3}$"
             />
           </label>
 
@@ -77,7 +81,7 @@ const Profile = ({ onLogout, onEditUser, serverError, successfully }) => {
           )}
         </div>
         <div className="profile__container">
-        <span className="profile__error-server profile__error-server-ок">{successfully}</span>
+          <span className="profile__error-server profile__error-server-ок">{successfully}</span>
           {serverError && (
             <span className="profile__error-server">{serverError}</span>
           )}
@@ -86,7 +90,7 @@ const Profile = ({ onLogout, onEditUser, serverError, successfully }) => {
               type="submit"
               className="profile__button profile__button_save"
               onClick={handleSaveClick}
-              disabled={!isValid}
+              disabled={!isValid || inputs.email === currentUser.email}
             >
               Сохранить
             </button>
@@ -115,7 +119,3 @@ const Profile = ({ onLogout, onEditUser, serverError, successfully }) => {
 };
 
 export default Profile;
-
-
-
-

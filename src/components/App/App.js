@@ -43,6 +43,34 @@ const App = () => {
   const showHeader = useLocationAwareness(allowedHeader, location);
   const showFooter = useLocationAwareness(allowedFooter, location);
 
+  useEffect(() => {
+    if (isLoggedIn) {
+      Promise.all([apiMain.getInfoUser(), apiMain.getMovies()])
+        .then(([user, movies]) => {
+          setCurrentUser(user);
+          setSaveMovies(movies);
+        })
+        .catch((err) => {
+          if (err.response && err.response.status === 404) {
+            setServerError(CONNECTION_PROBLEM);
+          }
+        });
+    }
+  }, [isLoggedIn]);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      apiMain
+        .checkToken(token)
+        .then((res) => {
+          setIsLoggedIn(true);
+          navigate(location);
+        })
+        .catch(console.error);
+    }
+  }, [])
+
   const handleDeleteMovie = (id) => {
     apiMain
       .deleteMovie(id)
@@ -58,7 +86,9 @@ const App = () => {
     apiMain
       .addMovie(data)
       .then((newMovie) => {
-        setSaveMovies([newMovie, ...saveMovies]);
+        if (newMovie) {
+          setSaveMovies([newMovie, ...saveMovies]);
+        }
       })
       .catch((err) => console.error(err));
   };
@@ -132,33 +162,7 @@ const App = () => {
     clearServerError();
   }, [location]);
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      Promise.all([apiMain.getInfoUser(), apiMain.getMovies()])
-        .then(([user, movies]) => {
-          setCurrentUser(user);
-          setSaveMovies(movies);
-        })
-        .catch((err) => {
-          if (err.response && err.response.status === 404) {
-            setServerError(CONNECTION_PROBLEM);
-          }
-        });
-    }
-  }, [isLoggedIn]);
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      apiMain
-        .checkToken(token)
-        .then((res) => {
-          setIsLoggedIn(true);
-          navigate(location);
-        })
-        .catch(console.error);
-    }
-  }, []);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

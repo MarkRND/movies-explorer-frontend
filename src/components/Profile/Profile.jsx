@@ -25,9 +25,6 @@ const Profile = ({ onLogout, onEditUser, serverError, successfully }) => {
     evt.preventDefault();
     if (isValid) {
       if (inputs.email === currentUser.email) {
-        // The email hasn't been changed, so you can show an error message or handle it as you prefer.
-        // For example, you can set an error state to show a message to the user.
-        // setErrorState("You haven't changed your email.");
         return;
       }
 

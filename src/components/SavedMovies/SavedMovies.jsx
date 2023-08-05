@@ -4,6 +4,7 @@ import SearchForm from "../SearchForm/SearchForm";
 import Preloader from "../Preloader/Preloader";
 import "./SavedMovies.css";
 
+
 const SavedMovies = ({ movies, onAddMovie, serverError, onDeleteMovie }) => {
   const [shortFilmFilter, setShortFilmFilter] = useState(false);
   const [filteredMovies, setFilteredMovies] = useState([]);

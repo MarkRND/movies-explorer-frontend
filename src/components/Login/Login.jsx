@@ -13,7 +13,7 @@ const Login = ({ onLogin, serverError }) => {
     onLogin(inputs);
     resetForm();
   };
-console.log(EMAIL_VALID)
+
   return (
     <main className="login">
       <Logo />

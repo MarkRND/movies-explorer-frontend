@@ -85,7 +85,7 @@ const App = () => {
   const handleAddMovie = async (data) => {
     try {
       const newMovie = await apiMain.addMovie(data);
-      if (newMovie && newMovie.success) {
+      if (newMovie) {
         setSaveMovies([newMovie, ...saveMovies]);
       }
     } catch (err) {

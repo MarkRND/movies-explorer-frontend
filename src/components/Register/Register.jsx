@@ -1,28 +1,29 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import "./Register.css";
+import { useFormAndValidation } from "../../hooks/useFormAndValidation";
+import { EMAIL_VALID } from "../constants/constants";
 
-const Register = () => {
-  const [isValid, setIsValid] = useState(true);
-  const defaultValues = {
-    name: "",
-    email: "",
-    password: "",
-  };
-  const [inputs, setInputs] = useState(defaultValues);
+const Register = ({ onRegister, serverError }) => {
+  const { inputs, handleChange, resetForm, errors, isValid } =
+    useFormAndValidation();
 
-  const handleChange = (evt) => {
-    const value = evt.target.value;
-    const name = evt.target.name;
-    setInputs((state) => ({ ...state, [name]: value }));
+  const handleRegisterSubmit = (evt) => {
+    evt.preventDefault();
+    onRegister(inputs);
+    resetForm();
   };
 
   return (
     <main className="register">
       <div className="register__container">
-      <Logo />
-        <form className="register__form" name="register">
+        <Logo />
+        <form
+          className="register__form"
+          name="register"
+          onSubmit={handleRegisterSubmit}
+        >
           <h2 className="register__title">Добро пожаловать!</h2>
           <div className="register__labels">
             <label className="register__label">
@@ -31,15 +32,16 @@ const Register = () => {
                 name="name"
                 className="register__input"
                 onChange={handleChange}
-                value={inputs.name}
+                value={inputs.name || ""}
                 type="text"
                 required
                 minLength="2"
                 maxLength="30"
                 placeholder="Введите имя"
-                
               />
-              <span className="register__error">Что-то пошло не так...</span>
+              {errors.name && (
+                <span className="register__error">{errors.name}</span>
+              )}
             </label>
             <label className="register__label">
               <span className="register__text">E-mail</span>
@@ -47,13 +49,14 @@ const Register = () => {
                 name="email"
                 className="register__input"
                 onChange={handleChange}
-                value={inputs.email}
+                value={inputs.email || ""}
                 type="email"
+                pattern={EMAIL_VALID}
                 placeholder="Введите email"
               />
-              <span className="register__error">
-                Пользователь с таким email уже существует
-              </span>
+              {errors.email && (
+                <span className="register__error">{errors.email}</span>
+              )}
             </label>
             <label className="register__label">
               <span className="register__text">Пароль</span>
@@ -61,27 +64,32 @@ const Register = () => {
                 name="password"
                 className="register__input"
                 onChange={handleChange}
-                value={inputs.password}
+                value={inputs.password || ""}
                 type="password"
                 placeholder="Введите пароль"
                 required
               />
-              <span className="register__error">Что-то пошло не так...</span>
+              {errors.password && (
+                <span className="register__error">{errors.password}</span>
+              )}
             </label>
           </div>
-          <button
-            type="submit"
-            className="register__button"
-            disabled={!isValid}
-          >
-            Зарегистрироваться
-          </button>
-          <span className="register__block">
-            Уже зарегистрированы?
-            <Link to="/signin" className="register__link">
-              Войти
-            </Link>
-          </span>
+          <div className="register__buttons">
+            <span className="register__error-server">{serverError}</span>
+            <button
+              type="submit"
+              className="register__button"
+              disabled={!isValid}
+            >
+              Зарегистрироваться
+            </button>
+            <span className="register__block">
+              Уже зарегистрированы?
+              <Link to="/signin" className="register__link">
+                Войти
+              </Link>
+            </span>
+          </div>
         </form>
       </div>
     </main>

@@ -93,7 +93,6 @@ const Navigation = ({ isLoggedIn }) => {
                 <ul className="navigation__menu">
                   <li>
                     <NavLink
-                      exact
                       to="/"
                       className="navigation__name"
                       activeclassname="active"

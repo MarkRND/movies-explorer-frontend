@@ -1,17 +1,34 @@
 import { useLocation } from "react-router-dom";
 import "./MoviesCard.css";
 import React, { useEffect, useState } from "react";
+// import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-const MoviesCard = ({ card, onDeleteClick }) => {
+const MoviesCard = ({ card, onDeleteMovie, onAddMovie, saveMovies }) => {
   const [isSaved, setIsSaved] = useState(false);
-  const currentLocation = useLocation();
+  const location = useLocation();
 
-  const handleSaveClick = () => {
-    setIsSaved(!isSaved);
+  useEffect(() => {
+    if (location.pathname === "/movies") {
+      setIsSaved(saveMovies.some((movie) => movie.movieId === card.id));
+    }
+  }, [location.pathname, card.id, saveMovies]);
+
+  const handleDeleteCard = () => {
+    if (location.pathname === "/movies") {
+      const movieId = saveMovies.find((movie) => movie.movieId === card.id);
+      onDeleteMovie(movieId._id);
+    }
+    if (location.pathname === "/saved-movies") {
+      onDeleteMovie(card._id);
+      setIsSaved(false);
+    }
   };
-  const handleDeleteClick = () => {
-    onDeleteClick(card.id);
+
+  const handleSave = () => {
+    onAddMovie(card);
+    setIsSaved(true);
   };
+
   const convertMinutesToHours = (minutes) => {
     const hours = Math.floor(minutes / 60);
     const Minutes = minutes % 60;
@@ -27,28 +44,31 @@ const MoviesCard = ({ card, onDeleteClick }) => {
         rel="noreferrer"
       >
         <img
-          // src={card.image}
-          src={`https://api.nomoreparties.co${card.image.url}`}
+          src={
+            location.pathname === "/movies"
+              ? `https://api.nomoreparties.co${card.image.url}`
+              : card.image
+          }
           alt={card.nameRU}
           className="card__image"
         />
       </a>
-      {currentLocation.pathname === "/movies" && (
+      {location.pathname === "/movies" && (
         <button
           className={`card__button ${isSaved ? "card__button_active" : ""}`}
           type="button"
           aria-label="Сохранить"
-          onClick={handleSaveClick}
+          onClick={isSaved ? handleDeleteCard : handleSave}
         >
           {isSaved ? "" : "Сохранить"}
         </button>
       )}
-      {currentLocation.pathname === "/saved-movies" && (
+      {location.pathname === "/saved-movies" && (
         <button
           className="card__button card__button_delete"
           type="button"
           aria-label="Удалить"
-          onClick={handleDeleteClick}
+          onClick={handleDeleteCard}
         ></button>
       )}
 

@@ -31,7 +31,7 @@
 .login__label {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  height: 88px;
 }
 
 .login__text {
@@ -41,6 +41,7 @@
   font-weight: 400;
   line-height: normal;
   color: #8b8b8b;
+  margin-bottom: 10px;
 }
 
 .login__input {
@@ -66,19 +67,23 @@
 }
 
 .login__error {
+  display: flex;
   margin: 0;
   color: #ee3465;
   font-size: 10px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  min-height: 22px;
+  align-items: flex-end;
+  padding-top: 1px;
 }
 
 .login__button {
   width: 100%;
   margin: 0;
   padding: 0;
-  margin-top: 157px;
+  margin-top: 20px;
   border-radius: 3px;
   height: 45px;
   font-size: 14px;
@@ -88,12 +93,36 @@
   background-color: #4285f4;
   color: #fff;
   border: none;
- }
+}
 
 .login__button:hover {
   opacity: 0.8;
   cursor: pointer;
 }
+
+button.login__button:disabled {
+  background-color: #F8F8F8;
+  cursor: not-allowed;
+  color: #C2C2C2;
+}
+
+.login__error-server {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  color: #ff004c;
+  justify-content: center;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  height: 10px;
+}
+
+.login__buttons {
+  margin-top: 139px;
+}
+
 .login__block {
   margin: 0;
   display: block;
@@ -127,12 +156,12 @@
 @media screen and (max-width: 430px) {
   .login {
     padding: 56px 0 30px;
-    }
+  }
 
   .login__form {
     max-width: 260px;
     width: 100%;
-   }
+  }
 
   .login__title {
     display: flex;
@@ -144,13 +173,21 @@
     margin-top: 80px;
   }
 
+  .login__buttons {
+    margin-top: 227px;
+
+  }
+
   .login__button {
-    margin-top: 245px;
     font-size: 12px;
   }
-  
+
   .login__block {
     font-size: 12px;
     margin-top: 15px;
-     }
+  }
+
+  .login__input {
+    height: 46px;
+  }
 }

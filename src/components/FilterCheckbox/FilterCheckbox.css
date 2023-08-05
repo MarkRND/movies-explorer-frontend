@@ -3,7 +3,8 @@
   padding: 0;
   margin-top: 28px;
   cursor: pointer;
-  display: inline-block;
+  display: flex;
+  /* justify-content: center; */
 }
 
 .filter__switch {

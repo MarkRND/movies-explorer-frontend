@@ -71,27 +71,30 @@ const App = () => {
     }
   }, [])
 
-  const handleDeleteMovie = (id) => {
-    apiMain
-      .deleteMovie(id)
-      .then(() => {
-        setSaveMovies((prevState) =>
-          prevState.filter((movies) => movies._id.toString() !== id.toString())
-        );
-      })
-      .catch((err) => console.error(err));
+  const handleDeleteMovie = async (id) => {
+    try {
+      await apiMain.deleteMovie(id);
+      setSaveMovies((prevState) =>
+        prevState.filter((movies) => movies._id.toString() !== id.toString())
+      );
+    } catch (err) {
+      console.error(err);
+    }
   };
 
-  const handleAddMovie = (data) => {
-    apiMain
-      .addMovie(data)
-      .then((newMovie) => {
-        if (newMovie) {
-          setSaveMovies([newMovie, ...saveMovies]);
-        }
-      })
-      .catch((err) => console.error(err));
+  const handleAddMovie = async (data) => {
+    try {
+      const newMovie = await apiMain.addMovie(data);
+      if (newMovie && newMovie.success) {
+        setSaveMovies([newMovie, ...saveMovies]);
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
+ 
+  
+  
 
   const handleLogout = () => {
     localStorage.removeItem("token");

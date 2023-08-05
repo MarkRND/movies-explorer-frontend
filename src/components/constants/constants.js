@@ -9,4 +9,4 @@ export const TOKEN_ERROR =
   "При авторизации произошла ошибка. Токен не передан или передан не в том формате";
 export const EMAIL_ERROR = "Пользователь с таким email уже существует.";
 export const PROFILE_ERROR = "При обновлении профиля произошла ошибка.";
-export const EMAIL_VALID = "^([^ ]+@[^ ]+\.[a-z]{2,6}|)$";
+export const EMAIL_VALID = "^[w]+@[a-zA-Z]+.[a-zA-Z]{1,3}$";

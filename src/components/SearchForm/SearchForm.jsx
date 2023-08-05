@@ -1,4 +1,3 @@
-// SearchForm.js
 import React, { useState, useEffect } from "react";
 import button from "../../images/button_search-min.svg";
 import "./SearchForm.css";

@@ -1,4 +1,4 @@
-// import { useState } from "react";
+
 import { Link } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import "./Register.css";
@@ -6,8 +6,14 @@ import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 import { EMAIL_VALID } from "../constants/constants";
 
 const Register = ({ onRegister, serverError }) => {
-  const { inputs, handleChange, resetForm, errors, isValid } =
-    useFormAndValidation();
+  const {
+    inputs,
+    handleChange,
+    resetForm,
+    errors,
+    isValid,
+    isFormEmpty,
+  } = useFormAndValidation();
 
   const handleRegisterSubmit = (evt) => {
     evt.preventDefault();
@@ -79,7 +85,7 @@ const Register = ({ onRegister, serverError }) => {
             <button
               type="submit"
               className="register__button"
-              disabled={!isValid}
+              disabled={!isValid || isFormEmpty}
             >
               Зарегистрироваться
             </button>

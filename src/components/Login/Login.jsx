@@ -5,7 +5,7 @@ import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 import { EMAIL_VALID } from "../constants/constants";
 
 const Login = ({ onLogin, serverError }) => {
-  const { inputs, handleChange, resetForm, errors, isValid } =
+  const { inputs, handleChange, resetForm, errors, isValid, isFormEmpty, } =
     useFormAndValidation();
 
   const handleAuthorizeSubmit = (evt) => {
@@ -58,7 +58,7 @@ const Login = ({ onLogin, serverError }) => {
           <div className="login__buttons">
             <span className="login__error-server">{serverError}</span>
           </div>
-          <button type="submit" className="login__button" disabled={!isValid}>
+          <button type="submit" className="login__button" disabled={!isValid || isFormEmpty}>
             Войти
           </button>
           <span className="login__block">

@@ -1,4 +1,3 @@
-// Movies.js
 import React, { useState, useEffect } from "react";
 import api from "../../utils/MoviesApi.js";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";

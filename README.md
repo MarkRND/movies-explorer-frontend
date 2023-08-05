@@ -10,5 +10,5 @@
 pull request
  ### https://github.com/MarkRND/movies-explorer-frontend/pull/3
 
-проект
+проект.
 ### upi.nomoredomains.xyz

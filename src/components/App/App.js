@@ -154,7 +154,7 @@ const App = () => {
         .checkToken(token)
         .then((res) => {
           setIsLoggedIn(true);
-          navigate("/");
+          navigate(location);
         })
         .catch(console.error);
     }

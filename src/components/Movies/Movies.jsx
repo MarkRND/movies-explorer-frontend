@@ -1,19 +1,18 @@
+// Movies.js
 import React, { useState, useEffect } from "react";
 import api from "../../utils/MoviesApi.js";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 import Preloader from "../Preloader/Preloader";
 import "./Movies.css";
-import {
-  CONNECTION_PROBLEM,
-} from "../constants/constants";
+import { CONNECTION_PROBLEM } from "../constants/constants";
 
 const Movies = ({ onAddMovie, onDeleteMovie, saveMovies }) => {
   const [movies, setMovies] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchHistory, setSearchHistory] = useState(
-    JSON.parse(localStorage.getItem("searchHistory")) || []
+    JSON.parse(localStorage.getItem("moviesSearchHistory")) || []
   );
   const [shortFilmFilter, setShortFilmFilter] = useState(false);
   const [error, setError] = useState(false);
@@ -73,6 +72,7 @@ const Movies = ({ onAddMovie, onDeleteMovie, saveMovies }) => {
 
     setFilteredMovies(filteredMovies);
     setSearchHistory((prevSearchHistory) => [value, ...prevSearchHistory]);
+    localStorage.setItem("moviesSearchHistory", JSON.stringify([value]));
   };
 
   const handleShortFilmFilterChange = () => {
@@ -83,10 +83,6 @@ const Movies = ({ onAddMovie, onDeleteMovie, saveMovies }) => {
       JSON.stringify(updatedShortFilmFilter)
     );
   };
-
-  useEffect(() => {
-    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
-  }, [searchHistory]);
 
   useEffect(() => {
     const savedShortFilmFilter = JSON.parse(
@@ -103,6 +99,7 @@ const Movies = ({ onAddMovie, onDeleteMovie, saveMovies }) => {
         onFilterMovies={handleFilterMovies}
         onSwitch={shortFilmFilter}
         onCheckbox={handleShortFilmFilterChange}
+        initialValue={searchHistory[0] || ""}
       />
 
       {loading ? (

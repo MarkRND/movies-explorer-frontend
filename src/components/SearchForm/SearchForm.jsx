@@ -1,15 +1,21 @@
-import React, { useState } from "react";
+// SearchForm.js
+import React, { useState, useEffect } from "react";
 import button from "../../images/button_search-min.svg";
 import "./SearchForm.css";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 
-const SearchForm = ({ onFilterMovies, onSwitch, onCheckbox }) => {
-  const [value, setValue] = useState("");
+const SearchForm = ({ onFilterMovies, onSwitch, onCheckbox, initialValue }) => {
+  const [value, setValue] = useState(initialValue || "");
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
+  useEffect(() => {
+    setValue(initialValue || "");
+  }, [initialValue]);
+
   const handleChange = (e) => {
-    setValue(e.target.value);
-    setIsButtonDisabled(!e.target.value.trim());
+    const inputValue = e.target.value;
+    setValue(inputValue);
+    setIsButtonDisabled(!inputValue.trim());
   };
 
   const handleSubmit = (e) => {

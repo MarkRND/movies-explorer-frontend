@@ -87,12 +87,13 @@ const App = () => {
     try {
       const newMovie = await apiMain.addMovie(data);
       if (newMovie) {
-        setSaveMovies([newMovie, ...saveMovies]);
+        setSaveMovies((prevMovies) => [newMovie, ...prevMovies]);
       }
     } catch (err) {
       console.error(err);
     }
   };
+  
 
   const handleLogout = () => {
     localStorage.removeItem("token");

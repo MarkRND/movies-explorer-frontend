@@ -141,6 +141,7 @@ button.profile__button_save:disabled {
   background-color: #f8f8f8;
   cursor: not-allowed;
   color: #c2c2c2;
+  opacity: 1;
 }
 
 .profile__buttons {

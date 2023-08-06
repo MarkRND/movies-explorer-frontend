@@ -1,7 +1,6 @@
 import { useLocation } from "react-router-dom";
 import "./MoviesCard.css";
 import React, { useEffect, useState } from "react";
-// import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 const MoviesCard = ({ card, onDeleteMovie, onAddMovie, saveMovies }) => {
   const [isSaved, setIsSaved] = useState(false);
@@ -24,9 +23,17 @@ const MoviesCard = ({ card, onDeleteMovie, onAddMovie, saveMovies }) => {
     }
   };
 
-  const handleSave = () => {
-    onAddMovie(card);
-    setIsSaved(true);
+  const handleSave = async () => {
+    if (!isSaved) {
+      try {
+        setIsSaved(true);
+        await onAddMovie(card);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsSaved(false);
+      }
+    }
   };
 
   const convertMinutesToHours = (minutes) => {

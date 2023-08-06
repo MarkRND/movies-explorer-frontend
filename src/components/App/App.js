@@ -31,6 +31,7 @@ import {
   TOKEN_ERROR,
   PROFILE_ERROR,
 } from "../constants/constants";
+import { SaveMoviesProvider } from "../../contexts/SaveMoviesContext";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -69,7 +70,7 @@ const App = () => {
         })
         .catch(console.error);
     }
-  }, [])
+  }, []);
 
   const handleDeleteMovie = async (id) => {
     try {
@@ -86,14 +87,12 @@ const App = () => {
     try {
       const newMovie = await apiMain.addMovie(data);
       if (newMovie) {
-              setSaveMovies([newMovie, ...saveMovies]);
+        setSaveMovies([newMovie, ...saveMovies]);
       }
     } catch (err) {
       console.error(err);
     }
   };
-  
-  
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -164,86 +163,88 @@ const App = () => {
     clearServerError();
   }, [location]);
 
-
-
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <div className="page">
-        <div className="page__content">
-          {showHeader && <Header isLoggedIn={isLoggedIn} />}
-          <Routes>
-            <Route path="/" element={<Main />} />
+      <SaveMoviesProvider>
+        {" "}
+        {/* Оборачиваем весь компонент в провайдер контекста */}
+        <div className="page">
+          <div className="page__content">
+            {showHeader && <Header isLoggedIn={isLoggedIn} />}
+            <Routes>
+              <Route path="/" element={<Main />} />
 
-            <Route
-              path="/movies"
-              element={
-                <ProtectedRoute
-                  element={Movies}
-                  isLoggedIn={isLoggedIn}
-                  saveMovies={saveMovies}
-                  onAddMovie={handleAddMovie}
-                  onDeleteMovie={handleDeleteMovie}
-                />
-              }
-            />
-
-            <Route
-              path="/saved-movies"
-              element={
-                <ProtectedRoute
-                  element={SavedMovies}
-                  isLoggedIn={isLoggedIn}
-                  movies={saveMovies}
-                  serverError={serverError}
-                  onAddMovie={handleAddMovie}
-                  onDeleteMovie={handleDeleteMovie}
-                />
-              }
-            />
-
-            <Route
-              path="/profile"
-              element={
-                <ProtectedRoute
-                  element={Profile}
-                  isLoggedIn={isLoggedIn}
-                  onEditUser={handleEditUser}
-                  onLogout={handleLogout}
-                  serverError={serverError}
-                  setServerError={setServerError}
-                  successfully={successfully}
-                />
-              }
-            />
-
-            <Route
-              path="/signin"
-              element={
-                isLoggedIn ? (
-                  <Navigate to="/" replace />
-                ) : (
-                  <Login onLogin={handleLogin} serverError={serverError} />
-                )
-              }
-            />
-            <Route
-              path="/signup"
-              element={
-                isLoggedIn ? (
-                  <Navigate to="/" replace />
-                ) : (
-                  <Register
-                    onRegister={handleRegister}
-                    serverError={serverError}
+              <Route
+                path="/movies"
+                element={
+                  <ProtectedRoute
+                    element={Movies}
+                    isLoggedIn={isLoggedIn}
+                    saveMovies={saveMovies}
+                    onAddMovie={handleAddMovie}
+                    onDeleteMovie={handleDeleteMovie}
                   />
-                )
-              }
-            />
-            <Route path="*" element={<ErrorContent />} />
-          </Routes>
-          {showFooter && <Footer />}
+                }
+              />
+
+              <Route
+                path="/saved-movies"
+                element={
+                  <ProtectedRoute
+                    element={SavedMovies}
+                    isLoggedIn={isLoggedIn}
+                    movies={saveMovies}
+                    serverError={serverError}
+                    onAddMovie={handleAddMovie}
+                    onDeleteMovie={handleDeleteMovie}
+                  />
+                }
+              />
+
+              <Route
+                path="/profile"
+                element={
+                  <ProtectedRoute
+                    element={Profile}
+                    isLoggedIn={isLoggedIn}
+                    onEditUser={handleEditUser}
+                    onLogout={handleLogout}
+                    serverError={serverError}
+                    setServerError={setServerError}
+                    successfully={successfully}
+                  />
+                }
+              />
+
+              <Route
+                path="/signin"
+                element={
+                  isLoggedIn ? (
+                    <Navigate to="/" replace />
+                  ) : (
+                    <Login onLogin={handleLogin} serverError={serverError} />
+                  )
+                }
+              />
+              <Route
+                path="/signup"
+                element={
+                  isLoggedIn ? (
+                    <Navigate to="/" replace />
+                  ) : (
+                    <Register
+                      onRegister={handleRegister}
+                      serverError={serverError}
+                    />
+                  )
+                }
+              />
+              <Route path="*" element={<ErrorContent />} />
+            </Routes>
+            {showFooter && <Footer />}
+          </div>
         </div>
-      </div>
+      </SaveMoviesProvider>
     </CurrentUserContext.Provider>
   );
 };

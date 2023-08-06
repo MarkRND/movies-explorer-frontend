@@ -25,17 +25,17 @@ const Profile = ({ onLogout, onEditUser, serverError, successfully }) => {
   const handleSaveClick = (evt) => {
     evt.preventDefault();
     if (isValid) {
-      if (inputs.email === currentUser.email) {
-        return;
-      }
-
       onEditUser({
         name: inputs.name,
         email: inputs.email,
       });
+
       setEditMode(false);
     }
   };
+  const isSaveButtonActive =
+    isValid &&
+    (inputs.name !== currentUser.name || inputs.email !== currentUser.email);
 
   return (
     <main className="profile">
@@ -70,6 +70,7 @@ const Profile = ({ onLogout, onEditUser, serverError, successfully }) => {
               required
               readOnly={!editMode}
               onChange={handleChange}
+              pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,}"
             />
           </label>
 
@@ -89,7 +90,7 @@ const Profile = ({ onLogout, onEditUser, serverError, successfully }) => {
               type="submit"
               className="profile__button profile__button_save"
               onClick={handleSaveClick}
-              disabled={!isValid || inputs.email === currentUser.email}
+              disabled={!isSaveButtonActive}
             >
               Сохранить
             </button>

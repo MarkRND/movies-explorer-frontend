@@ -7,5 +7,5 @@ export const LOGIN_ERROR = "Вы ввели неправильный логин 
 export const TOKEN_ERROR = "При авторизации произошла ошибка. Токен не передан или передан не в том формате";
 export const EMAIL_ERROR = "Пользователь с таким email уже существует.";
 export const PROFILE_ERROR = "При обновлении профиля произошла ошибка.";
-export const EMAIL_VALID = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+export const EMAIL_VALID = /[a-z0-9]+@[a-z]+\.[a-z]{2,}/;
 export const EMAIL_FORMAT = "Неверный формат адреса электронной почты";

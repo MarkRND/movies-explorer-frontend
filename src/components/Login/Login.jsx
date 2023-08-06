@@ -33,6 +33,7 @@ const Login = ({ onLogin, serverError }) => {
               placeholder="Введите email"
               name="email"
               required
+              pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,}"
             />
             {errors.email && (
               <span className="login__error">{errors.email}</span>

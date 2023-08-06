@@ -1,5 +1,4 @@
 import { useState, useCallback } from "react";
-import { EMAIL_VALID, EMAIL_FORMAT } from "../components/constants/constants";
 
 export function useFormAndValidation() {
   const [inputs, setInputs] = useState({});
@@ -8,18 +7,8 @@ export function useFormAndValidation() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    if (name === "email") {
-      const isValidEmail = EMAIL_VALID.test(value);
-      setErrors({
-        ...errors,
-        [name]: isValidEmail ? "" : EMAIL_FORMAT,
-      });
-    } else {
-      setErrors({ ...errors, [name]: e.target.validationMessage });
-    }
-
     setInputs({ ...inputs, [name]: value });
+    setErrors({ ...errors, [name]: e.target.validationMessage });
     setIsValid(e.target.closest("form").checkValidity());
   };
 

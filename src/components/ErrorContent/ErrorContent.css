@@ -36,7 +36,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  margin-bottom: 60px;
+  padding-bottom: 60px;
 }
 
 .error__link:hover {
@@ -51,7 +51,7 @@
 
   .error__link {
     margin-top: 184px;
-    margin-bottom: 222px;
+    padding-bottom: 222px;
   }
 }
 
@@ -70,6 +70,6 @@
   .error__link {
     margin-top: 284px;
     font-size: 12px;
-    margin-bottom: 30px;
+    padding-bottom: 30px;
   }
 }

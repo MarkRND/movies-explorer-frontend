@@ -6,7 +6,7 @@ const ErrorContent = () => {
   const navigate = useNavigate();
 
   const clickBack = () => {
-    navigate(-1);
+    navigate(-3);
   };
 
   return (

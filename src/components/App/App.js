@@ -93,7 +93,6 @@ const App = () => {
       console.error(err);
     }
   };
-  
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -167,8 +166,6 @@ const App = () => {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <SaveMoviesProvider>
-        {" "}
-        {/* Оборачиваем весь компонент в провайдер контекста */}
         <div className="page">
           <div className="page__content">
             {showHeader && <Header isLoggedIn={isLoggedIn} />}

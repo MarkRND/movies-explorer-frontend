@@ -1,21 +1,21 @@
 import React from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import "./ErrorContent.css";
 
 const ErrorContent = () => {
-  const navigate = useNavigate();
+  let navigate = useNavigate();
 
   const clickBack = () => {
-    navigate(-3);
+    navigate(-1);
   };
 
   return (
     <main className="error">
       <h1 className="error__title">404</h1>
       <p className="error__message">Страница не найдена</p>
-      <Link className="error__link" onClick={clickBack}>
+      <NavLink className="error__link" onClick={clickBack}>
         Назад
-      </Link>
+      </NavLink>
     </main>
   );
 };

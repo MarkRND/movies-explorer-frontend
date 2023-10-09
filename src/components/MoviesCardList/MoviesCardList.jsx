@@ -1,43 +1,65 @@
-import MoviesCard from "../MoviesCard/MoviesCard";
 import React, { useEffect, useState } from "react";
 import "./MoviesCardList.css";
-import api from "../../utils/ApiMovies";
-const MoviesCardList = () => {
-  const [cards, setCards] = useState([]);
-  const [visibleCards, setVisibleCards] = useState(12);
+import MoviesCard from "../MoviesCard/MoviesCard";
+import useVisibleCards from "../../hooks/useVisibleCards";
+
+const MoviesCardList = ({
+  onAddMovie,
+  onDeleteMovie,
+  isSavedPage,
+  movies,
+  saveMovies,
+  showAllCards,
+}) => {
+  const { calculateVisibleCards, handleCardClick } = useVisibleCards();
+  const [visibleCardsIndex, setVisibleCardsIndex] = useState(0);
+
   useEffect(() => {
-    api
-      .getMovies()
-      .then((cards) => setCards(cards))
-      .catch((err) => console.log(err));
-  }, []);
+    if (showAllCards && isSavedPage) {
+      setVisibleCardsIndex(movies.length);
+    }
+  }, [showAllCards, isSavedPage, movies.length]);
 
-  const handleCardDelete = (cardId) => {
-    setCards((prevCards) => prevCards.filter((card) => card.id !== cardId));
+  const handleLoadMoreClick = () => {
+    setVisibleCardsIndex((prevIndex) => prevIndex + handleCardClick());
   };
 
-  const handleCardClick = () => {
-    setVisibleCards((prevVisibleCards) => prevVisibleCards + 6);
-  };
+  const shouldShowLoadMoreButton =
+    !showAllCards &&
+    !isSavedPage &&
+    visibleCardsIndex + calculateVisibleCards() < movies.length;
 
   return (
     <section className="movies-card">
-      <ul className="movies-card__block">
-        {cards.slice(0, visibleCards).map((card) => (
-          <MoviesCard
-            key={card.id}
-            card={card}
-            onDeleteClick={handleCardDelete}
-          />
-        ))}
-      </ul>
-      <div className="movies-card__сontainer">
-        {cards.length > 9 && visibleCards < cards.length && (
-          <button className="movies-card__button" onClick={handleCardClick}>
-            Ещё
-          </button>
+      <>
+        <ul className="movies-card__block">
+          {movies
+            .slice(
+              0,
+              visibleCardsIndex + (showAllCards ? 0 : calculateVisibleCards())
+            )
+            .map((card) => (
+              <MoviesCard
+                key={card.id || card._id}
+                card={card}
+                onDeleteMovie={onDeleteMovie}
+                onAddMovie={onAddMovie}
+                isSaved={isSavedPage}
+                saveMovies={saveMovies}
+              />
+            ))}
+        </ul>
+        {shouldShowLoadMoreButton && (
+          <div className="movies-card__сontainer">
+            <button
+              className="movies-card__button"
+              onClick={handleLoadMoreClick}
+            >
+              Ещё
+            </button>
+          </div>
         )}
-      </div>
+      </>
     </section>
   );
 };

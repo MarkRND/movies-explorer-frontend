@@ -24,5 +24,4 @@ const api = new ApiMovies({
   },
 });
 
-
 export default api;

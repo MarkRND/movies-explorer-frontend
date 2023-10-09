@@ -30,12 +30,13 @@
 .register__labels {
   margin: 0;
   margin-top: 40px;
+
 }
 
 .register__label {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  height: 88px;
 }
 
 .register__text {
@@ -45,13 +46,14 @@
   font-weight: 400;
   line-height: normal;
   color: #8b8b8b;
+  margin-bottom: 10px;
 }
 
 .register__input {
-  /* box-sizing: border-box; */
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  height: 45px;
+  min-height: 45px;
   border-radius: 8px;
   background: #2f2f2f;
   border: 0;
@@ -70,19 +72,41 @@
 }
 
 .register__error {
+  display: flex;
   margin: 0;
   color: #ee3465;
   font-size: 10px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  min-height: 22px;
+  align-items: flex-end;
+  padding-top: 1px;
+
 }
 
-.register__button {
+.register__error-server {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  color: #ff004c;
+  justify-content: center;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  height: 10px;
+}
+
+.register__buttons {
+  margin-top: 38px;
+}
+
+.register__button  {
   width: 100%;
   margin: 0;
   padding: 0;
-  margin-top: 68px;
+  margin-top: 20px;
   border-radius: 3px;
   height: 45px;
   font-size: 14px;
@@ -98,6 +122,13 @@
 .register__button:hover {
   opacity: 0.8;
   cursor: pointer;
+}
+
+.register__button:disabled {
+  background-color: #F8F8F8;
+  cursor: not-allowed;
+  color: #C2C2C2;
+  opacity: 1;
 }
 
 .register__block {
@@ -149,8 +180,10 @@
     margin-top: 80px;
   }
 
+  .register__buttons {
+    margin-top: 139px;
+  }
   .register__button {
-    margin-top: 155px;
     font-size: 12px;
   }
 

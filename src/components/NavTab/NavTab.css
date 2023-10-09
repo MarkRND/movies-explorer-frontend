@@ -9,15 +9,8 @@
 }
 
 .nav-tab__item {
-  display: flex;
-  background-color: #303030;
-  width: 96px;
-  height: 36px;
-  border-radius: 10px;
   text-decoration: none;
   list-style-type: none;
-  align-items: center;
-  justify-content: center;
   cursor: pointer;
 }
 
@@ -26,12 +19,20 @@
 }
 
 .nav-tab__link {
+  display: flex;
   margin: 0;
   color: #fff;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
-  line-height: 16px; /* 133.333% */
+  line-height: 16px;
+  /* 133.333% */
+  background-color: #303030;
+  width: 96px;
+  height: 36px;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-tab__link:hover {
@@ -55,7 +56,7 @@
     padding-bottom: 17px;
   }
 
-  .nav-tab__item {
+  .nav-tab__link {
     width: 82px;
     height: 26px;
     border-radius: 6px;

@@ -1,64 +1,72 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import "./Login.css";
+import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 
-const Login = () => {
-  const [isValid, setIsValid] = useState(true);
-  const defaultValues = {
-    email: "",
-    password: "",
-  };
-  const [inputs, setInputs] = useState(defaultValues);
+const Login = ({ onLogin, serverError }) => {
+  const { inputs, handleChange, resetForm, errors, isValid } =
+    useFormAndValidation();
 
-  const handleChange = (evt) => {
-    const value = evt.target.value;
-    const name = evt.target.name;
-    setInputs((state) => ({ ...state, [name]: value }));
+  const handleAuthorizeSubmit = (evt) => {
+    evt.preventDefault();
+    onLogin(inputs);
+    resetForm();
   };
 
   return (
     <main className="login">
       <Logo />
-      <form className="login__form" name="login">
+      <form
+        className="login__form"
+        name="login"
+        onSubmit={handleAuthorizeSubmit}
+      >
         <h2 className="login__title">Рады видеть!</h2>
         <div className="login__labels">
           <label className="login__label">
             <span className="login__text">E-mail</span>
             <input
-              name="email"
               className="login__input"
               onChange={handleChange}
-              value={inputs.email}
+              value={inputs.email || ""}
               type="email"
               placeholder="Введите email"
+              name="email"
               required
+              pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,}"
             />
-            <span className="login__error">Что-то пошло не так...</span>
+            {errors.email && (
+              <span className="login__error">{errors.email}</span>
+            )}
           </label>
           <label className="login__label">
             <span className="login__text">Пароль</span>
             <input
-              name="password"
               className="login__input"
               onChange={handleChange}
-              value={inputs.password}
+              value={inputs.password || ""}
               type="password"
               placeholder="Введите пароль"
+              name="password"
               required
             />
-            <span className="login__error">Что-то пошло не так...</span>
+            {errors.password && (
+              <span className="login__error">{errors.password}</span>
+            )}
           </label>
+          <div className="login__buttons">
+            <span className="login__error-server">{serverError}</span>
+          </div>
+          <button type="submit" className="login__button" disabled={!isValid}>
+            Войти
+          </button>
+          <span className="login__block">
+            Ещё не зарегистрированы?
+            <Link to="/signup" className="login__link">
+              Регистрация
+            </Link>
+          </span>
         </div>
-        <button type="submit" className="login__button" disabled={!isValid}>
-          Войти
-        </button>
-        <span className="login__block">
-          Ещё не зарегистрированы?
-          <Link to="/signup" className="login__link">
-            Регистрация
-          </Link>
-        </span>
       </form>
     </main>
   );
